@@ -4,7 +4,7 @@ local clr_blue = Color(87, 87, 255)
 
 concommand.Add("js_jbux_check", function(ply, cmd, args)
 	BetterChatPrint(ply, "У тебя есть " .. tostring(GAMEMODE:GetJBux(ply)) .. " JBux!", color_orange)
-end, "Показывает сколько у тебя деняг.")
+end, nil, "Показывает сколько у тебя деняг.")
 
 concommand.Add("addmoney", function(ply, cmd, args)
 	if ply:IsSuperAdmin() then
@@ -62,7 +62,7 @@ end, function(cmd, args)
 	end
 
 	return NameTable
-end, "Donates JBux to someone or your team")
+end, nil, "Donates JBux to someone or your team")
 
 --[[hook.Add("PlayerSpawn", "JSMOD_ECONPLAYERSPAWN", function(ply, transition)
 	if transition then return end

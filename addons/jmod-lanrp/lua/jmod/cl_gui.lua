@@ -134,8 +134,12 @@ function JMod.StandardResourceDisplay(typ, amt, maximum, x, y, siz, vertical, fo
 	opacity = opacity or 150
 	brite = brite or 200
 	surface.SetDrawColor(255, 255, 255, opacity)
-	surface.SetMaterial(JMod.EZ_RESOURCE_TYPE_ICONS[typ] or SpecialIcons[typ])
-	surface.DrawTexturedRect(x - siz / 2, y - siz / 2, siz, siz)
+	local IconMat = JMod.EZ_RESOURCE_TYPE_ICONS[typ] or SpecialIcons[typ]
+	-- у неизвестных типов ресурсов (напр. аномальных) иконки может не быть - не падаем, просто рисуем без неё
+	if IconMat then
+		surface.SetMaterial(IconMat)
+		surface.DrawTexturedRect(x - siz / 2, y - siz / 2, siz, siz)
+	end
 	local Col = Color(brite, brite, brite, opacity)
 	local UnitText = tostring(amt) .. " UNITS"
 
